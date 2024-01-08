@@ -9,6 +9,7 @@ from torch.optim import Adam
 from torch.utils.data import DataLoader
 from torchvision.datasets import MNIST
 from torchvision.utils import save_image
+import wandb
 
 # Model Hyperparameters
 dataset_path = "datasets"
@@ -21,6 +22,8 @@ latent_dim = 20
 lr = 1e-3
 epochs = 5
 
+# init wandb
+wandb.init(config={})
 
 # Data loading
 mnist_transform = transforms.Compose([transforms.ToTensor()])
@@ -103,6 +106,8 @@ decoder = Decoder(latent_dim=latent_dim, hidden_dim=hidden_dim, output_dim=x_dim
 
 model = Model(encoder=encoder, decoder=decoder).to(DEVICE)
 
+# Magic
+wandb.watch(model, log_freq=100)
 
 BCE_loss = nn.BCELoss()
 
@@ -124,6 +129,7 @@ for epoch in range(epochs):
     for batch_idx, (x, _) in enumerate(train_loader):
         if batch_idx % 100 == 0:
             print(batch_idx)
+            
         x = x.view(batch_size, x_dim)
         x = x.to(DEVICE)
 
@@ -136,6 +142,9 @@ for epoch in range(epochs):
 
         loss.backward()
         optimizer.step()
+    
+        if batch_idx % 100 == 0:
+            wandb.log({"loss": loss})
     print(
         "\tEpoch",
         epoch + 1,
@@ -143,6 +152,13 @@ for epoch in range(epochs):
         "\tAverage Loss: ",
         overall_loss / (batch_idx * batch_size),
     )
+    # log image 
+    img = x[-1].view(28,28)
+    rec = x_hat[-1].view(28,28)
+    example = [wandb.Image(img,caption=f"original image "), 
+               wandb.Image(rec,caption=f"reconstrunction, epoch {epoch}")]
+    wandb.log({"Example" : example})
+    
 print("Finish!!")
 
 # Generate reconstructions
@@ -158,6 +174,7 @@ with torch.no_grad():
 
 save_image(x.view(batch_size, 1, 28, 28), "orig_data.png")
 save_image(x_hat.view(batch_size, 1, 28, 28), "reconstructions.png")
+
 
 # Generate samples
 with torch.no_grad():

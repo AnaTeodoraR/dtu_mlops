@@ -1,0 +1,80 @@
+{
+    "os": "Linux-5.15.133.1-microsoft-standard-WSL2-x86_64-with-glibc2.31",
+    "python": "3.11.5",
+    "heartbeatAt": "2024-01-05T11:07:32.888388",
+    "startedAt": "2024-01-05T11:07:31.609520",
+    "docker": null,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "/mnt/c/Users/Bruger/OneDrive - Danmarks Tekniske Universitet/Skrivebord/DTU-MatTek/semester 9 - NU/02476 - ML Operations/dtu_mlops/s4_debugging_and_logging/exercise_files/vae_mnist_working.py",
+    "codePathLocal": "vae_mnist_working.py",
+    "codePath": "s4_debugging_and_logging/exercise_files/vae_mnist_working.py",
+    "git": {
+        "remote": "https://github.com/AnaTeodoraR/dtu_mlops.git",
+        "commit": "297fca3e82f2b6c7232fd7c901467eafd9a7179a"
+    },
+    "email": "s194324@student.dtu.dk",
+    "root": "/mnt/c/Users/Bruger/OneDrive - Danmarks Tekniske Universitet/Skrivebord/DTU-MatTek/semester 9 - NU/02476 - ML Operations/dtu_mlops",
+    "host": "DESKTOP-BBB3H8E",
+    "username": "teodora",
+    "executable": "/home/teodora/miniconda3/envs/mlops_env/bin/python",
+    "cpu_count": 8,
+    "cpu_count_logical": 8,
+    "cpu_freq": {
+        "current": 1996.195,
+        "min": 0.0,
+        "max": 0.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 1996.195,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 1996.195,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 1996.195,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 1996.195,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 1996.195,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 1996.195,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 1996.195,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 1996.195,
+            "min": 0.0,
+            "max": 0.0
+        }
+    ],
+    "disk": {
+        "/": {
+            "total": 250.92389297485352,
+            "used": 24.210086822509766
+        }
+    },
+    "memory": {
+        "total": 7.449199676513672
+    }
+}
